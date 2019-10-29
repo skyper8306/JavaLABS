@@ -1,0 +1,2 @@
+aaa forPredator 10
+bbb forPredator 10
