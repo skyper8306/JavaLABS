@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <Button fx:id="btnCreate" layoutX="454.0" layoutY="561.0" mnemonicParsing="false" onAction="#clickCreate" text="Create text file" />
+      <Button fx:id="btnDelete" layoutX="657.0" layoutY="561.0" mnemonicParsing="false" onAction="#clickDelete" text="Delete text file" />
+      <Button fx:id="btnOpen" layoutX="560.0" layoutY="561.0" mnemonicParsing="false" onAction="#clickOpen" text="Open text file" />
+      <TextField fx:id="text" layoutX="64.0" layoutY="2.0" prefHeight="25.0" prefWidth="681.0" text="C:\" />
+      <ListView fx:id="listView" layoutX="14.0" layoutY="33.0" onMouseClicked="#listDoubleClick" prefHeight="517.0" prefWidth="773.0" />
+      <Button fx:id="go" layoutX="750.0" layoutY="2.0" mnemonicParsing="false" onAction="#clickGo" text="Go" />
+      <Button fx:id="back" layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#clickBack" text="Back" />
+   </children>
+</Pane>
