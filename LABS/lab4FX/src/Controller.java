@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 import java.awt.*;
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 
 public class Controller {
@@ -30,6 +29,7 @@ public class Controller {
 
     File file;
     File oldValue;
+    String sep = File.separator;
 
     public void clickCreate(ActionEvent actionEvent) {
         Node node = (Node) actionEvent.getSource();
@@ -55,7 +55,7 @@ public class Controller {
     public void clickOpen(ActionEvent actionEvent) throws IOException {
         if(listView.getSelectionModel().getSelectedItem() != null) {
             if(listView.getSelectionModel().getSelectedItem().endsWith(".txt")) {
-                text.setText(file + "\\" + listView.getSelectionModel().getSelectedItem());
+                text.setText(file + sep + listView.getSelectionModel().getSelectedItem());
             }
         } else {
             Node node = (Node) actionEvent.getSource();
@@ -76,7 +76,7 @@ public class Controller {
     public void clickDelete(ActionEvent actionEvent) throws IOException {
         if(listView.getSelectionModel().getSelectedItem() != null) {
             if(listView.getSelectionModel().getSelectedItem().endsWith(".txt")) {
-                file = new File(file + "\\" + listView.getSelectionModel().getSelectedItem());
+                file = new File(file + sep + listView.getSelectionModel().getSelectedItem());
                 Files.delete(file.toPath());
                 clickBack(null);
             }
@@ -124,21 +124,26 @@ public class Controller {
     }
 
     public void clickBack(ActionEvent actionEvent) throws IOException {
-        StringBuilder c = new StringBuilder();
+        if(file.getParent()!=null){
+            file = new File(file.getParent());
+            text.setText(file.toString());
+            clickGo(null);
+        }
+        /*StringBuilder c = new StringBuilder();
         c.append(file);
-        if (c.lastIndexOf("\\") != -1) {
-            c.delete(c.lastIndexOf("\\"), c.length());
-            if (c.toString().endsWith(":")) c.append("\\");
+        if (c.lastIndexOf(sep) != -1) {
+            c.delete(c.lastIndexOf(sep), c.length());
+            if (c.toString().endsWith(":")) c.append(sep);
             //file = new File(c.toString());
             text.setText(c.toString());
             clickGo(null);
-        }
+        }*/
     }
 
     public void listDoubleClick(MouseEvent mouseEvent) throws IOException {
         if(listView.getSelectionModel().getSelectedItem() != null){
             if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && mouseEvent.getClickCount() == 2) {
-                text.setText(file + "\\" + listView.getSelectionModel().getSelectedItem());
+                text.setText(file + sep + listView.getSelectionModel().getSelectedItem());
                 clickGo(null);
             }
         }
@@ -166,6 +171,7 @@ public class Controller {
 
     @FXML
     private void initialize() throws IOException {
+        text.setText(System.getProperty("user.dir"));
         clickGo(null);
     }
 }

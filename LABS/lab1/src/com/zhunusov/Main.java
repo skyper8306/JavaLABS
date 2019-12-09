@@ -1,23 +1,23 @@
 package com.zhunusov;
 
-import java.util.Scanner;
 import java.util.Random;
 public class Main
 {
     public static void main(String[] args) {
-
         Random r = new Random();
-        Scanner sc = new Scanner(System.in);
-        int number;
+        if(args.length != 1){
+            System.exit(-1);
+        }
+        int number = Integer.parseInt(args[0]);
 
-        do{
+        /*do{
             System.out.println("Please enter a positive integer!");
             while(!sc.hasNextInt()){
                 System.out.println("That not an integer");
                 sc.next();
             }
             number = sc.nextInt();
-        }while(number <= 0);
+        }while(number <= 0);*/
         System.out.println("Thank you! Got " + number);
 
         int t;
@@ -31,6 +31,6 @@ public class Main
             }
             System.out.println("");
         }
-        sc.close();
+        //sc.close();
     }
 }

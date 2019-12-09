@@ -6,6 +6,9 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        if(args.length!=2){
+            System.exit(-1);
+        }
         WorkWithAnimal wwa = new WorkWithAnimal();
         wwa.animals.add(new Herbivorous("Harbivorous1",TypeOfFood.forHerbivorous, 5));
         wwa.animals.add(new Herbivorous("Herbivorous1",TypeOfFood.forHerbivorous,5));
@@ -29,9 +32,9 @@ public class Main {
             }
         }
 
-        wwa.animals = WorkWithAnimal.FromFileToList("1.txt");
+        wwa.animals = WorkWithAnimal.FromFileToList(args[0]);
         wwa.print();
 
-        WorkWithAnimal.FromListToFile(wwa.animals, "out.txt");
+        WorkWithAnimal.FromListToFile(wwa.animals, args[1]);
     }
 }
