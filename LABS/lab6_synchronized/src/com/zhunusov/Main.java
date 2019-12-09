@@ -15,6 +15,9 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        if(args.length!=1){
+            System.exit(-1);
+        }
         ArrayList<Account> accounts = new ArrayList<>();
         accounts.add(new Account(0, 1000));
         accounts.add(new Account(1, 1000));
@@ -23,7 +26,10 @@ public class Main {
         try {
             int id, from, to;
             float amount;
-            File xmlFile = new File("Lab6InputExample.xml");
+            File xmlFile = new File(args[0]);
+            if(!(xmlFile.isFile() && (xmlFile.getName().endsWith(".xml") || xmlFile.getName().endsWith(".txt")))){
+                throw new IOException("It is not xml/txt file!");
+            }
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.parse(xmlFile);
@@ -54,11 +60,6 @@ public class Main {
                         float finalAmount = amount;
                         int finalId = id;
                         Thread thread = new Thread(() -> {
-                            try {
-                                Thread.sleep(2000); //"обработка"
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
                             boolean success = Transaction.operation(
                                     accounts.stream().filter(Account -> Account.getID() == finalFrom).findFirst().get(),
                                     accounts.stream().filter(Account -> Account.getID() == finalTo).findFirst().get(),

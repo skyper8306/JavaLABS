@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="100.0" maxWidth="350.0" minHeight="100.0" minWidth="350.0" prefHeight="100.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<children>
+   <Button fx:id="lab1" layoutX="25.0" layoutY="60.0" mnemonicParsing="false" onAction="#openLab1" text="lab1" />
+   <Button fx:id="lab2" layoutX="75.0" layoutY="60.0" mnemonicParsing="false" onAction="#openLab2" text="lab2" />
+   <Button fx:id="lab3" layoutX="125.0" layoutY="60.0" mnemonicParsing="false" onAction="#openLab3" text="lab3" />
+   <Button fx:id="lab4" layoutX="175.0" layoutY="60.0" mnemonicParsing="false" onAction="#openLab4FX" text="lab4" />
+   <Button fx:id="lab5" layoutX="225.0" layoutY="60.0" mnemonicParsing="false" onAction="#openLab5" text="lab5" />
+   <Button fx:id="lab6" layoutX="275.0" layoutY="60.0" mnemonicParsing="false" onAction="#openLab6" text="lab6" />
+   <TextField fx:id="text" layoutX="15.0" layoutY="25.0" minWidth="275.0" onAction="#onTextChanged" promptText="Path to folder LABS" />
+   <Button fx:id="open" layoutX="295.0" layoutY="25.0" mnemonicParsing="false" onAction="#openLABS" text="Open" />
+      <Label layoutX="20.0" layoutY="5.0" text="Path to folder LABS:" />
+</children>
+</Pane>
