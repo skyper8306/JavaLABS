@@ -22,7 +22,7 @@ public class Main {
 
         try {
             int id, from, to;
-            float amount;
+            int amount;
             File xmlFile = new File("Lab6InputExample.xml");
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -39,7 +39,7 @@ public class Main {
                     id =  Integer.parseInt(element.getAttribute("id"));
                     from = Integer.parseInt(element.getAttribute("from"));
                     to = Integer.parseInt(element.getAttribute("to"));
-                    amount = Float.parseFloat(element.getAttribute("amount"));
+                    amount = Integer.parseInt(element.getAttribute("amount"));
 
                     System.out.println("ID trans: " + id);
                     System.out.println("From: " + from);
@@ -51,7 +51,7 @@ public class Main {
                     if(accounts.stream().anyMatch(Account -> Account.getID()== finalFrom) &&
                             accounts.stream().anyMatch(Account -> Account.getID()==finalTo)){
 
-                        float finalAmount = amount;
+                        int finalAmount = amount;
                         int finalId = id;
                         Thread thread = new Thread(() -> {
                             boolean success = Transaction.operation(

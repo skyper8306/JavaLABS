@@ -1,37 +1,21 @@
 package com.zhunusov;
 
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class Account {
     private int id;
-    private float amount;
-    private ReentrantLock lock;  // блокировка
+    private AtomicInteger amount = new AtomicInteger(0);
 
-    Account(int id, float amount){
+    Account(int id, int amount) {
         this.id = id;
-        this.amount = amount;
-        lock = new ReentrantLock();
+        this.amount = new AtomicInteger(amount);
     }
 
-    boolean changeAmount(float difference){
-        lock.lock();
-        try {
-            if(amount+difference >= 0) {
-                amount += difference;
-                return  true;
-            } else {
-                return false;
-            }
-        } finally {
-            lock.unlock();
-        }
+    void changeAmount(int difference) {
+        this.amount.addAndGet(difference);
     }
 
-    int getID(){
+    int getID() {
         return id;
-    }
-
-    float getAmount(){
-        return amount;
     }
 }
