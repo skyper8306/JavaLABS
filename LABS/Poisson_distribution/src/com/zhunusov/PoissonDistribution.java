@@ -3,7 +3,7 @@ package com.zhunusov;
 import java.util.Random;
 
 public class PoissonDistribution {
-    static int getPoissonRandom(int lambda) {
+    static int getPoissonRandom(double lambda) {
         Random r = new Random();
         double L = Math.exp(-lambda);
         int k = 0;
@@ -30,13 +30,11 @@ public class PoissonDistribution {
         mx = Math.round(sum);
         sum2 /= arr.length;
         dx = Math.round(sum2 - sum * sum);
-        //double sigma = Math.sqrt(dx);
 
         System.out.println(mx);
         System.out.println(dx);
-        //System.out.println(sigma);
 
-        if (lambda == mx && lambda == dx) {//(isEqual(lambda, mx, sigma) && isEqual(lambda, dx, sigma)) {
+        if (lambda == mx && lambda == dx) {
             return true;
         }
         return false;
